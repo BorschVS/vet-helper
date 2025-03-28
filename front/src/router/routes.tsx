@@ -3,7 +3,7 @@ import { AppRouteObject } from "./interfaces";
 export const routes: AppRouteObject[] = [
   {
     path: "/",
-    name: "Главная",
+    name: "Головна",
     element: <div>Заглушка для главной страницы</div>,
     showInNavigation: true,
     order: 1,

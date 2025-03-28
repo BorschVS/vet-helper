@@ -12,7 +12,7 @@ function App() {
     <BrowserRouter>
       <RouteStateProvider>
         <div className="min-h-screen w-full bg-primary-bg text-primary-text flex flex-col transition-colors">
-          <header className="py-4 px-6 flex justify-between items-center border-b border-border-primary">
+          <header className="py-4 px-6 flex justify-between items-center border-b border-border-primary gap-4">
             <MobileNavigation />
             <h1 className="text-xl font-bold mr-6">Vet Helper</h1>
             <Navigation />
