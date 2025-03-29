@@ -39,3 +39,9 @@ This project uses pnpm for package management. If you encounter any issues:
 pnpm store prune
 pnpm install
 ```
+
+### Run db
+
+```
+pnpm run db:push
+```
