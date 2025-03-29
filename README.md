@@ -5,6 +5,15 @@ git clone https://github.com/your-username/vet-helper.git
 cd vet-helper
 pnpm install
 ```
+
+## Running the Complete Stack
+
+To run the frontend, backend, and database all at once:
+```
+pnpm dev
+
+```
+
 ## Frontend Setup
 
 ### Development Mode
