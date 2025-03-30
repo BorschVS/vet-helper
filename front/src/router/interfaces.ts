@@ -1,9 +1,12 @@
-import { lazy, ReactNode } from "react";
+import { ReactNode } from "react";
 import type { RouteObject as RouterRouteObject } from "react-router-dom";
 
 export interface AppRouteObject extends Omit<RouterRouteObject, "children"> {
-  // Отображаемое имя маршрута
-  name: string;
+  // Путь маршрута
+  path: string;
+
+  // React-элемент для отрисовки
+  element: ReactNode;
 
   // Показывать ли элемент в навигации
   showInNavigation?: boolean;
@@ -27,7 +30,7 @@ export interface AppRouteObject extends Omit<RouterRouteObject, "children"> {
   };
 
   // Дочерние маршруты (вложенные)
-  children?: AppRouteObject[];
+  children?: ChildrenRouteObject[];
 
   // Метка для группировки в навигации
   group?: string;
@@ -38,4 +41,16 @@ export interface AppRouteObject extends Omit<RouterRouteObject, "children"> {
     description?: string;
     [key: string]: string | undefined;
   };
+
+  // Указывает, является ли этот маршрут макетом (layout)
+  isLayout?: boolean;
+}
+
+export interface AppChildrenRouteObject extends AppRouteObject {
+  name: string;
+}
+
+export interface AuthGuardProps {
+  children: ReactNode;
+  route: AppRouteObject;
 }

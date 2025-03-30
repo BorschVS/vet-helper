@@ -1,12 +1,12 @@
 import { AppRouteObject } from "../interfaces";
 import routes from "../routes";
 
-export function getNavigationRoutes(routesList: AppRouteObject[] = routes): AppRouteObject[] {
-  const navRoutes = routesList.filter((route) => route.showInNavigation);
+export function getNavigationItems(
+  routeObj: AppRouteObject = routes
+): AppRouteObject[] {
+  if (!routeObj.children) return [];
 
-  return navRoutes.sort((a, b) => {
-    const orderA = a.order || 100;
-    const orderB = b.order || 100;
-    return orderA - orderB;
-  });
+  return routeObj.children
+    .filter(route => route.showInNavigation)
+    .sort((a, b) => (a.order || 0) - (b.order || 0));
 }

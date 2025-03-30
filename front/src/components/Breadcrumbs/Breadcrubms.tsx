@@ -1,37 +1,50 @@
 import { Link, useLocation } from "react-router-dom";
-import { generateBreadcrumbs } from "../../router/utils/generateBreadcrubms";
+import { routes } from "../../router/routes";
+import { findRouteByPath } from "../../router/utils/findRouteByPath";
 
-export default function Breadcrumbs() {
+const Breadcrumbs = () => {
   const location = useLocation();
-  const breadcrumbs = generateBreadcrumbs(location);
+  const pathname = location.pathname;
 
-  if (breadcrumbs.length <= 1) {
-    return null;
-  }
+  const pathSegments = pathname.split("/").filter(Boolean);
+  const breadcrumbs = pathSegments.map((_, index) => {
+    const path = "/" + pathSegments.slice(0, index + 1).join("/");
+    const route = findRouteByPath(path, routes);
+
+    return {
+      path,
+      label: route?.breadcrumb?.title || route?.name || pathSegments[index],
+    };
+  });
+
+  breadcrumbs.unshift({
+    path: "/",
+    label: "Головна",
+  });
 
   return (
-    <nav className="flex mb-4" aria-label="Breadcrumb">
-      <ol className="flex flex-wrap items-center space-x-2">
-        {breadcrumbs.map((crumb, index) => (
-          <li key={crumb.path} className="flex items-center">
-            {index > 0 && (
-              <span className="mx-2 text-text-tertiary">/</span>
-            )}
-            {crumb.isActive ? (
-              <span className="text-text-secondary" aria-current="page">
-                {crumb.name}
-              </span>
-            ) : (
-              <Link
-                to={crumb.path}
-                className="text-accent-primary hover:text-accent-secondary"
-              >
-                {crumb.name}
-              </Link>
-            )}
-          </li>
-        ))}
-      </ol>
-    </nav>
+    <div className="px-5 my-2">
+      <nav className="text-md">
+        <ol className="list-none py-2 px-4 flex flex-row bg-secondary-bg rounded-md">
+          {breadcrumbs.map((breadcrumb, index) => (
+            <li key={breadcrumb.path} className="flex flex-row items-start">
+              {index > 0 && <span className="mx-2 text-gray-500">/</span>}
+              {index === breadcrumbs.length - 1 ? (
+                <span className="">{breadcrumb.label}</span>
+              ) : (
+                <Link
+                  to={breadcrumb.path}
+                  className="text-accent-primary hover:text-accent-hover"
+                >
+                  {breadcrumb.label}
+                </Link>
+              )}
+            </li>
+          ))}
+        </ol>
+      </nav>
+    </div>
   );
-}
+};
+
+export default Breadcrumbs;

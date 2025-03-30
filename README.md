@@ -11,7 +11,6 @@ pnpm install
 To run the frontend, backend, and database all at once:
 ```
 pnpm dev
-
 ```
 
 ## Frontend Setup

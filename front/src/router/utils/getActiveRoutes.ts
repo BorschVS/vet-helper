@@ -1,11 +1,10 @@
-import { isActiveRoute } from "./isActiveRoute";
 import { AppRouteObject } from "../interfaces";
-import { getAllRoutes } from "../utils/getAllRoutes";
+import routes from "../routes";
+import { getRouteByPath } from "./getRoutesByPath";
 
-export function getActiveRoutes(
-  location: Location,
-  routes: AppRouteObject[] = getAllRoutes(),
-  exact: boolean = false
-): AppRouteObject[] {
-  return routes.filter((route) => isActiveRoute(route, location, exact));
+export function getActiveRoute(
+  path: string,
+  routeObj: AppRouteObject = routes
+): AppRouteObject | undefined {
+  return getRouteByPath(path, routeObj);
 }

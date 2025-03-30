@@ -1,23 +1,36 @@
 import { Link, useLocation } from "react-router-dom";
-import { getNavigationRoutes } from "../../router/utils/getNavigationRoutes";
+import { AppRouteObject } from "../../router/interfaces";
+import { getNavigationItems } from "../../router/utils/getNavigationRoutes";
 
 export default function Navigation() {
+  const navItems = getNavigationItems();
   const location = useLocation();
-  const navRoutes = getNavigationRoutes();
+
+  const isActive = (path: string): boolean => {
+    if (path === "") {
+      return location.pathname === "/";
+    }
+    return location.pathname.startsWith(`/${path}`);
+  };
 
   return (
-    <nav className="hidden md:flex space-x-4">
-      {navRoutes.map((route) => (
-        <Link
-          key={route.path}
-          to={route.path || "/"}
-          className={`transition-colors ${
-            location.pathname === route.path ? "text-accent-primary font-medium" : "hover:text-accent-primary"
-          }`}
-        >
-          {route.name}
-        </Link>
-      ))}
+    <nav>
+      <div className="hidden md:flex flex-col">
+        {navItems.map((item: AppRouteObject) => (
+          <Link
+            key={item.path}
+            to={`/${item.path}`}
+            className={`text-start py-2 px-4 transition duration-300 rounded-md ${
+              isActive(item.path)
+                ? "bg-tertiary-bg font-medium text-accent-primary"
+                : "hover:text-accent-primary hover:bg-secondary-bg"
+            }`}
+          >
+            {item.name}
+            {item.icon && <span className="ml-2">{item.icon}</span>}
+          </Link>
+        ))}
+      </div>
     </nav>
   );
 }
