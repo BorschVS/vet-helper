@@ -13,6 +13,42 @@ const AnamnesisPage = lazy(() => import("../pages/AnamnesisPage"));
 const DiagnosticsPage = lazy(() => import("../pages/DiagnosticsPage"));
 const RegistrationPage = lazy(() => import("../pages/RegistrationPage"));
 
+const therapySubRoutes: AppChildrenRouteObject[] = [
+  {
+    path: "anamnesis",
+    name: "Анамнез",
+    element: <AnamnesisPage />,
+    showInNavigation: true,
+    order: 1,
+    meta: {
+      title: "Анамнез",
+      description: "Система керування ветеринарною клінікою",
+    },
+  },
+  {
+    path: "diagnostics",
+    name: "Діагностика",
+    element: <DiagnosticsPage />,
+    showInNavigation: true,
+    order: 2,
+    meta: {
+      title: "Діагностика",
+      description: "Система керування ветеринарною клінікою",
+    },
+  },
+  {
+    path: "therapy",
+    name: "Лікування",
+    element: <DiagnosticsPage />,
+    showInNavigation: true,
+    order: 3,
+    meta: {
+      title: "Діагностика",
+      description: "Система керування ветеринарною клінікою",
+    },
+  },
+];
+
 const subRoutes: AppChildrenRouteObject[] = [
   {
     path: "",
@@ -30,6 +66,7 @@ const subRoutes: AppChildrenRouteObject[] = [
     name: "Реєстратура",
     element: <RegistrationPage />,
     showInNavigation: true,
+    order: 2,
     meta: {
       title: "Реєстура",
       description: "Реєстатура ветеринарної клініки",
@@ -40,42 +77,8 @@ const subRoutes: AppChildrenRouteObject[] = [
     name: "Терапія",
     element: <TherapyPage />,
     showInNavigation: true,
-    children: [
-      {
-        path: "anamnesis",
-        name: "Анамнез",
-        element: <AnamnesisPage />,
-        showInNavigation: true,
-        order: 2,
-        meta: {
-          title: "Анамнез",
-          description: "Система керування ветеринарною клінікою",
-        },
-      },
-      {
-        path: "diagnostics",
-        name: "Діагностика",
-        element: <DiagnosticsPage />,
-        showInNavigation: true,
-        order: 3,
-        meta: {
-          title: "Діагностика",
-          description: "Система керування ветеринарною клінікою",
-        },
-      },
-      {
-        path: "therapy",
-        name: "Лікування",
-        element: <DiagnosticsPage />,
-        showInNavigation: true,
-        order: 3,
-        meta: {
-          title: "Діагностика",
-          description: "Система керування ветеринарною клінікою",
-        },
-      },
-    ],
-    order: 4,
+    children: therapySubRoutes,
+    order: 3,
     meta: {
       title: "Терапія",
       description: "Призначення лікування та терапії для пацієнтів",
@@ -86,7 +89,7 @@ const subRoutes: AppChildrenRouteObject[] = [
     name: "Персонал",
     element: <StaffPage />,
     showInNavigation: true,
-    order: 5,
+    order: 4,
     meta: {
       title: "Персонал",
       description: "Управління персоналом клініки",
@@ -97,7 +100,7 @@ const subRoutes: AppChildrenRouteObject[] = [
     name: "Фінанси",
     element: <FinancePage />,
     showInNavigation: true,
-    order: 6,
+    order: 5,
     meta: {
       title: "Фінанси",
       description: "Фінансовий облік та звітність",
@@ -108,7 +111,7 @@ const subRoutes: AppChildrenRouteObject[] = [
     name: "Маркетинг",
     element: <MarketingPage />,
     showInNavigation: true,
-    order: 7,
+    order: 6,
     meta: {
       title: "Маркетинг",
       description: "Маркетингові інструменти та аналітика",
@@ -119,7 +122,7 @@ const subRoutes: AppChildrenRouteObject[] = [
     name: "Інвентар",
     element: <InventoryPage />,
     showInNavigation: true,
-    order: 8,
+    order: 7,
     meta: {
       title: "Інвентар",
       description: "Управління інвентарем та обладнанням",
@@ -130,6 +133,7 @@ const subRoutes: AppChildrenRouteObject[] = [
     name: "Налаштування",
     element: <SettingsPage />,
     showInNavigation: true,
+    order: 8,
     meta: {
       title: "Налаштування",
       description: "Налаштування аккаунту та системи",
