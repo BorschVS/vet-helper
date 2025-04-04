@@ -10,7 +10,14 @@ const Layout = () => {
       <header className="flex flex-col justify-start">
         <div className="flex justify-between w-full px-5">
           <Link to="/" className="py-4 px-2 text-lg font-semibold">
-            Vet Helper
+            <div className="flex items-center font-bold text-xl shadow-md">
+              <span className="bg-gray-100 dark:bg-gray-800 text-accent-primary px-3 py-1 rounded-l-md border border-accent-primary border-r-0">
+                Vet
+              </span>
+              <span className="bg-accent-primary text-white px-3 py-1 rounded-r-md border border-accent-primary">
+                Helper
+              </span>
+            </div>
           </Link>
           <div className="flex flex-row items-center space-x-4">
             <ThemeToggle />

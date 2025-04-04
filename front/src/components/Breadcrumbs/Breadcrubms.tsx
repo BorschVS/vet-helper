@@ -2,20 +2,65 @@ import { Link, useLocation } from "react-router-dom";
 import { routes } from "../../router/routes";
 import { findRouteByPath } from "../../router/utils/findRouteByPath";
 
+const pathTranslations: Record<string, string> = {
+  // Общие разделы
+  "home": "Головна",
+  "dashboard": "Дашборд",
+  "patients": "Пацієнти",
+  "therapy": "Терапія",
+  "diagnostics": "Діагностика",
+  "anamnesis": "Анамнез",
+  "staff": "Персонал",
+  "settings": "Налаштування",
+  "finance": "Фінанси",
+  "inventory": "Інвентар",
+  "marketing": "Маркетинг",
+  
+  // Подразделы терапии
+  "treatment": "Лікування",
+  "procedures": "Процедури",
+  "prescriptions": "Призначення",
+  
+  // Подразделы диагностики
+  "lab": "Лабораторія",
+  "imaging": "Візуалізація",
+  
+  // Пациенты
+  "new": "Новий",
+  "profile": "Профіль",
+  "history": "Історія",
+  
+  // Другие разделы по необходимости...
+};
+
 const Breadcrumbs = () => {
   const location = useLocation();
   const pathname = location.pathname;
 
   const pathSegments = pathname.split("/").filter(Boolean);
-  const breadcrumbs = pathSegments.map((_, index) => {
+  const breadcrumbs = pathSegments.map((segment, index) => {
     const path = "/" + pathSegments.slice(0, index + 1).join("/");
     const route = findRouteByPath(path, routes);
 
+    // Приоритет отображения:
+    // 1. Название из метаданных breadcrumb маршрута
+    // 2. Название маршрута из свойства name
+    // 3. Перевод из словаря
+    // 4. Исходный сегмент пути
+    const label = 
+      route?.breadcrumb?.title || 
+      route?.name || 
+      pathTranslations[segment] || 
+      segment;
+
     return {
       path,
-      label: route?.breadcrumb?.title || route?.name || pathSegments[index],
+      label,
     };
   });
+
+  console.log(breadcrumbs);
+
 
   breadcrumbs.unshift({
     path: "/",

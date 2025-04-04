@@ -13,7 +13,7 @@ const AnamnesisPage = lazy(() => import("../pages/AnamnesisPage"));
 const DiagnosticsPage = lazy(() => import("../pages/DiagnosticsPage"));
 const RegistrationPage = lazy(() => import("../pages/RegistrationPage"));
 
-const therapySubRoutes: AppChildrenRouteObject[] = [
+export const therapySubRoutes: AppChildrenRouteObject[] = [
   {
     path: "anamnesis",
     name: "Анамнез",
@@ -37,19 +37,52 @@ const therapySubRoutes: AppChildrenRouteObject[] = [
     },
   },
   {
-    path: "therapy",
+    path: "treatment",
     name: "Лікування",
     element: <DiagnosticsPage />,
     showInNavigation: true,
     order: 3,
     meta: {
-      title: "Діагностика",
+      title: "Лікування",
       description: "Система керування ветеринарною клінікою",
+    },
+  },
+  {
+    path: "check",
+    name: "Чек",
+    element: <DiagnosticsPage />,
+    showInNavigation: true,
+    order: 5,
+    meta: {
+      title: "Чек",
+      description: "Чеки та фінансові документи",
+    },
+  },
+  {
+    path: "recommendations",
+    name: "Рекомендації",
+    element: <DiagnosticsPage />,
+    showInNavigation: true,
+    order: 5,
+    meta: {
+      title: "Чек",
+      description: "Чеки та фінансові документи",
+    },
+  },
+  {
+    path: "preventive",
+    name: "Профілактика",
+    element: <DiagnosticsPage />,
+    showInNavigation: true,
+    order: 5,
+    meta: {
+      title: "Чек",
+      description: "Чеки та фінансові документи",
     },
   },
 ];
 
-const subRoutes: AppChildrenRouteObject[] = [
+export const subRoutes: AppChildrenRouteObject[] = [
   {
     path: "",
     name: "Головна",

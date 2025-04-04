@@ -2,6 +2,8 @@ import { ReactNode } from "react";
 import type { RouteObject as RouterRouteObject } from "react-router-dom";
 
 export interface AppRouteObject extends Omit<RouterRouteObject, "children"> {
+  // Уникальный идентификатор маршрута
+  name?: string;
   // Путь маршрута
   path: string;
 
@@ -30,7 +32,7 @@ export interface AppRouteObject extends Omit<RouterRouteObject, "children"> {
   };
 
   // Дочерние маршруты (вложенные)
-  children?: ChildrenRouteObject[];
+  children?: AppChildrenRouteObject[];
 
   // Метка для группировки в навигации
   group?: string;
