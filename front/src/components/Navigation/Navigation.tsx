@@ -1,9 +1,9 @@
 import { Link, useLocation } from "react-router-dom";
-import { AppRouteObject } from "../../router/interfaces";
-import { getNavigationItems } from "../../router/utils/getNavigationRoutes";
+import { AppRouteObject } from "../../types/interfaces/routes";
+import { getNavigationRoutes } from "../../router/utils/getNavigationRoutes";
 
 export default function Navigation() {
-  const navItems = getNavigationItems();
+  const navItems = getNavigationRoutes();
   const location = useLocation();
 
   const isActive = (path: string): boolean => {

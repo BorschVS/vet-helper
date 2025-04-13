@@ -1,10 +1,7 @@
-import { ReactNode, useState } from "react";
+import { useState } from "react";
 import { RouteStateContext } from "../context/RouteStateContext";
-import { RouteStates } from "../types";
-
-interface RouteStateProviderProps {
-  children: ReactNode;
-}
+import { RouteStates } from "../../types/types/routes";
+import { RouteStateProviderProps } from "../../types/interfaces/routes";
 
 export function RouteStateProvider({ children }: RouteStateProviderProps) {
   const [states, setStates] = useState<RouteStates>({});

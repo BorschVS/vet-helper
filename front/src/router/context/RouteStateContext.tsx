@@ -1,6 +1,5 @@
 import { createContext } from "react";
-
-type RouteStates = Record<string, unknown>;
+import { RouteStates } from "../../types/types/routes";
 
 export const RouteStateContext = createContext<{
   states: RouteStates;
@@ -13,4 +12,3 @@ export const RouteStateContext = createContext<{
   getRouteState: () => undefined,
   clearRouteState: () => {},
 });
-

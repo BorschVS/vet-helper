@@ -1,5 +1,5 @@
 import { matchPath, Location } from "react-router-dom";
-import { AppRouteObject } from "../interfaces";
+import { AppRouteObject } from "../../types/interfaces/routes";
 
 export function isActiveRoute(route: AppRouteObject, location: Location, exact: boolean = false): boolean {
   return (

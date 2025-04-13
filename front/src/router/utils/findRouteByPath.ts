@@ -1,17 +1,12 @@
-import { AppRouteObject } from "../interfaces";
+import { AppRouteObject } from "../../types/interfaces/routes";
 
-export const findRouteByPath = (
-  path: string,
-  currentRoutes: AppRouteObject
-): AppRouteObject | undefined => {
+export const findRouteByPath = (path: string, currentRoutes: AppRouteObject): AppRouteObject | undefined => {
   if (currentRoutes.path === path) return currentRoutes;
 
   if (!currentRoutes.children) return undefined;
 
   for (const child of currentRoutes.children) {
-    const fullPath = `${currentRoutes.path === "/" ? "" : currentRoutes.path}/${
-      child.path
-    }`.replace(/\/\//g, "/");
+    const fullPath = `${currentRoutes.path === "/" ? "" : currentRoutes.path}/${child.path}`.replace(/\/\//g, "/");
 
     if (fullPath === path) return child;
 

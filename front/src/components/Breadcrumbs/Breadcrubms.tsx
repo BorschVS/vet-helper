@@ -59,9 +59,6 @@ const Breadcrumbs = () => {
     };
   });
 
-  console.log(breadcrumbs);
-
-
   breadcrumbs.unshift({
     path: "/",
     label: "Головна",

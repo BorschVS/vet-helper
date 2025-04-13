@@ -3,40 +3,37 @@ import Navigation from "../components/Navigation/Navigation";
 import MobileNavigation from "../components/MobileNavigation/MobileNavigation";
 import Breadcrumbs from "../components/Breadcrumbs/Breadcrubms";
 import { Link, Outlet } from "react-router-dom";
+import Logo from "../components/Logo";
+import { layout } from "../styles";
 
 const Layout = () => {
   return (
-    <div className="app-layout">
-      <header className="flex flex-col justify-start">
-        <div className="flex justify-between w-full px-5">
-          <Link to="/" className="py-4 px-2 text-lg font-semibold">
-            <div className="flex items-center font-bold text-xl shadow-md">
-              <span className="bg-gray-100 dark:bg-gray-800 text-accent-primary px-3 py-1 rounded-l-md border border-accent-primary border-r-0">
-                Vet
-              </span>
-              <span className="bg-accent-primary text-white px-3 py-1 rounded-r-md border border-accent-primary">
-                Helper
-              </span>
-            </div>
+    <div className={layout.appLayout.container}>
+      <header className={layout.appLayout.header.container}>
+        <div className={layout.appLayout.header.top}>
+          <Link to="/" className={layout.appLayout.header.logo}>
+            <Logo />
           </Link>
-          <div className="flex flex-row items-center space-x-4">
+          <div className={layout.appLayout.header.mobileMenu}>
             <ThemeToggle />
             <MobileNavigation />
           </div>
         </div>
-        <div className="">
+        <div>
           <Breadcrumbs />
         </div>
       </header>
-      <div className="flex">
-        <aside className="hidden md:flex w-[15%] pl-5">
+      <div className={layout.appLayout.main.container}>
+        <aside className={layout.appLayout.main.sidebar}>
           <Navigation />
         </aside>
-        <main className="w-[100%]">
+        <main className={layout.appLayout.main.content}>
           <Outlet />
         </main>
       </div>
-      <footer>{/* Footer content if needed */}</footer>
+      <footer className={layout.appLayout.footer.container}>
+        <div className={layout.appLayout.footer.text}>© 2025 Vet Helper - Система керування ветеринарною клінікою</div>
+      </footer>
     </div>
   );
 };

@@ -1,5 +1,9 @@
-import { ReactNode } from "react";
+import { JSX, ReactNode } from "react";
 import type { RouteObject as RouterRouteObject } from "react-router-dom";
+
+export interface RouteStateProviderProps {
+  children: ReactNode;
+}
 
 export interface AppRouteObject extends Omit<RouterRouteObject, "children"> {
   // Уникальный идентификатор маршрута
@@ -55,4 +59,18 @@ export interface AppChildrenRouteObject extends AppRouteObject {
 export interface AuthGuardProps {
   children: ReactNode;
   route: AppRouteObject;
+}
+
+export interface PageDefinition {
+  path: string;
+  name: string;
+  component: React.LazyExoticComponent<() => JSX.Element>;
+  showInNavigation?: boolean;
+  order?: number;
+  description?: string;
+  children?: PageDefinition[];
+}
+
+export interface PageTitleManagerProps {
+  routes: AppRouteObject;
 }
