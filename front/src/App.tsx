@@ -3,9 +3,11 @@ import { RouteStateProvider } from "./router/providers/RouterStateProvider";
 import AppRouter from "./router";
 import "./App.css";
 
+const basename = import.meta.env.BASE_URL || "/";
+
 const App = () => {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <RouteStateProvider>
         <AppRouter />
       </RouteStateProvider>

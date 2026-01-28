@@ -38,9 +38,14 @@ jobs:
         run: pnpm --filter front build
         env:
           VITE_API_URL: ${{ secrets.VITE_API_URL || 'http://localhost:3000' }}
+          VITE_BASE_PATH: /vet-helper/
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+      - name: Copy 404.html for SPA routing
+        run: |
+          cp front/public/404.html front/dist/404.html || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
