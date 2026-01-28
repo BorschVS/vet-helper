@@ -4,7 +4,7 @@ import { AuthGuardProps } from "../../types/interfaces/routes";
 const useAuth = () => {
   return {
     isAuthenticated: true,
-    hasPermission: (permission: string) => true,
+    hasPermission: (_permission: string) => true,
   };
 };
 

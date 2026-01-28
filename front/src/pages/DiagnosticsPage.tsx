@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { components, theme } from '../styles';
 import { DiagnosticProcedure, DiagnosticAppointment } from '../types/interfaces/diagnostics';
 import ProcedureSelectionForm from '../components/Forms/Diagnostics/ProcedureSelectionForm';

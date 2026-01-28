@@ -10,6 +10,7 @@ export interface UrineFecesState {
   increased?: boolean;
   decreased?: boolean;
   constipation?: boolean;
+  [key: string]: boolean | undefined;
 }
 
 export interface VomitingState {
@@ -21,6 +22,7 @@ export interface VomitingState {
   frequency: string;
   diarrhea?: boolean;
   constipation?: boolean;
+  [key: string]: string | boolean | undefined;
 }
 
 export interface AdditionalSymptomsState {

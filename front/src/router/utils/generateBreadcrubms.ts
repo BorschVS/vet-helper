@@ -21,7 +21,7 @@ export function generateBreadcrumbs(location: Location): Array<{
         matchPath({ path: route.path || "", end: true }, currentPath)
       );
       
-      if (matchedRoute) {
+      if (matchedRoute && matchedRoute.name) {
         breadcrumbs.push({
           path: currentPath,
           name: matchedRoute.name,

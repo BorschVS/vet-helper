@@ -1,5 +1,5 @@
 import React from "react";
-import { RadioGroup, TextArea, ConditionalFields } from "../../FormFields";
+import { RadioGroup, ConditionalFields } from "../../FormFields";
 import { DietState } from "../../../types/interfaces/anamnesis";
 import { HandleNestedChangeFunction } from "../../../types/types/changeHandlers";
 
